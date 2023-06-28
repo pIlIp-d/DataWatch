@@ -114,6 +114,7 @@ const DropZone = () => {
                 onDropDragOver={onDropDragOver}
                 onDrop={onDrop}
                 verticalCompact={true}
+                draggableCancel=".cancel-drag"
             >
                 {renderItems()}
             </ReactGridLayout>

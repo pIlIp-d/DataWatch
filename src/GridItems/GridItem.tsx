@@ -1,4 +1,5 @@
 import {Component, ReactElement} from "react";
+import {DragHandle} from "@mui/icons-material";
 
 type GridItemProps = {
     name: string;
@@ -25,8 +26,11 @@ export default abstract class GridItem extends Component<GridItemProps, GridItem
     abstract clone(): GridItem;
 
     render() {
-        return <div className={"grid-item"}>
-            {this.generateDOM()}
+        return <div className={"grid-item flex h-full w-full flex-col"}>
+            <DragHandle className="drag-handle" />
+            <div className={"cancel-drag flex-1 bg-green-800"}>
+                {this.generateDOM()}
+            </div>
         </div>;
     }
 }
