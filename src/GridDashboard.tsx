@@ -29,35 +29,33 @@ const GridDashboard: React.FC = () => {
     }
 
     return (
-        <div>
-            <div className={""}>
+        <div className={"bg-divider text-text_primary disabled:text-text_secondary"}>
+            <div>
                 {isOpen &&
                     <div className={"h-full w-full fixed bg-gray-500 z-20 opacity-40"} onClick={closeSidebar}></div>
                 }
                 <button
-                    className="fixed z-10 left-[1rem] bottom-[1rem] middle none center rounded-lg bg-pink-500 p-3 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                    className="fixed z-10 left-[1rem]  bottom-[1rem] middle none center rounded-lg hover:bg-button_active p-3 text-button_active hover:text-text_secondary transition-all focus:opacity-[0.85]"
                     data-ripple-light="true"
                     onClick={toggleSidebar}
                 >
-                    <AddIcon/>
+                    <AddIcon style={{"fontSize": "4rem"}} />
                 </button>
                 <div className={"content w-screen h-screen"}>
-                    <h1>Grid Dashboard</h1>
+                    <h1>DataWatch</h1>
                     <div className={"dropzone-container h-full"}>
                         <DropZone />
                     </div>
                 </div>
             </div>
-            <div className={`z-30 fixed  top-0 left-0 ${isOpen ? '' : 'translate-x-[-100%]'}`}>
-                <div className="bg-gray-200 w-64">
+            <div className={`z-30 fixed top-0 left-0 ${isOpen ? '' : 'translate-x-[-100%]'}`}>
+                <div className="bg-gray-200 w-64 ">
                     <CloseIcon className={"absolute right-0"} onClick={toggleSidebar}/>
-                    <div className="p-4 flex justify-between">
+                    <div className="p-4 flex justify-between  bg-divider">
                         <h1 className="text-lg font-semibold">Drag What You Want &gt;&gt;</h1>
                     </div>
-                    <div className="p-4">
-                        <ul>
-                            {getAllGridItemsForSidebar(closeSidebar)}
-                        </ul>
+                    <div className="p-4 bg-divider ">
+                        {getAllGridItemsForSidebar(closeSidebar)}
                     </div>
                 </div>
             </div>

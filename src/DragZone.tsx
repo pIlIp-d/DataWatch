@@ -80,13 +80,13 @@ const DropZone = () => {
         if ("dataTransfer" in e) {
             const transferredData = e.dataTransfer.getData("text/plain");
             const elementWidth = document.getElementById(transferredData)?.offsetWidth;
-            return {w: getNearestWidth(elementWidth), h: 2};
+            return {w: getNearestWidth(elementWidth), h: 1};
         }
     }
 
     function renderItems() {
         return children.map((child, index) =>
-            <div key={index} className={"bg-pink-100 h-full w-full"} data-grid={child.layout as Layout}>
+            <div key={index} className={"h-full w-full bg-background rounded-l p-1"} data-grid={child.layout as Layout}>
                 <CloseIcon className={"absolute right-0"} onClick={() => removeItem(child.gridItem.state.id)}/>
                 {child.gridItem.render()}
             </div>
@@ -98,7 +98,7 @@ const DropZone = () => {
     return (
         <div className="layout w-full h-full overflow-x-hidden">
             <ReactGridLayout
-                className="layout w-full min-h-full  bg-amber-200"
+                className="layout w-full min-h-full"
                 breakpoints={breakpoints}
                 cols={cols}
                 rowHeight={120}

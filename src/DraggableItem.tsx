@@ -10,7 +10,7 @@ const DraggableItem: React.FC<DraggableItemProps> = ({ name, onDrag, children })
     return (
       <div
           id={name}
-          className="droppable-element overflow-hidden w-full border-solid border-black"
+          className="droppable-element overflow-hidden w-full border-solid border-black border-2 my-2"
           draggable={true}
           unselectable="on"
           onDragStart={e => e.dataTransfer.setData("text/plain", name)}

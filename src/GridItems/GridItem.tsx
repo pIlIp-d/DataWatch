@@ -26,9 +26,9 @@ export default abstract class GridItem extends Component<GridItemProps, GridItem
     abstract clone(): GridItem;
 
     render() {
-        return <div className={"grid-item flex h-full w-full flex-col"}>
+        return <div className={"grid-item flex h-full w-full flex-col bg-background"}>
             <DragHandle className="drag-handle" />
-            <div className={"cancel-drag flex-1 bg-green-800"}>
+            <div className={"cancel-drag flex-1"}>
                 {this.generateDOM()}
             </div>
         </div>;
