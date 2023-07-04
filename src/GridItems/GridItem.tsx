@@ -1,33 +1,32 @@
 import {Component, ReactElement} from "react";
 import {DragHandle} from "@mui/icons-material";
 
-type GridItemProps = {
+export  type GridItemProps = {
     name: string;
 };
-type GridItemState = {
+export type GridItemState = {
     name: string,
-    id: string
+    data: object
 };
-function getNewRandomId(){
-    return (Math.random() + 1).toString(36).substring(2);
-}
 
-export default abstract class GridItem extends Component<GridItemProps, GridItemState> {
 
-    constructor(props: Readonly<GridItemProps>) {
+export default class GridItem extends Component<GridItemProps, GridItemState> {
+
+    constructor(props: GridItemProps) {
         super(props);
         this.state = {
-             name: this.props.name, id: getNewRandomId()
-        };
+            name: this.props.name,
+            data: {}
+        }
     }
 
-    abstract generateDOM(): ReactElement | null;
-
-    abstract clone(): GridItem;
+    generateDOM(): ReactElement | null {
+        return null;
+    }
 
     render() {
         return <div className={"grid-item flex h-full w-full flex-col bg-background"}>
-            <DragHandle className="drag-handle" />
+            <DragHandle className="drag-handle"/>
             <div className={"cancel-drag flex-1"}>
                 {this.generateDOM()}
             </div>

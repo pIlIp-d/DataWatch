@@ -2,12 +2,11 @@ import React from 'react';
 
 import DropZone from './DragZone';
 
-import { useState } from 'react'
+import {useState} from 'react'
 import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
-import GRID_ITEMS from "./GridItems/GridItems.tsx";
+import GRID_ITEMS, {getComponentFromGridItem, GridItemWrapper} from "./GridItems/GridItems.tsx";
 import DraggableItem from "./DraggableItem.tsx";
-import GridItem from "./GridItems/GridItem.tsx";
 
 const GridDashboard: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -20,10 +19,10 @@ const GridDashboard: React.FC = () => {
         setIsOpen(false);
     };
 
-    function getAllGridItemsForSidebar(onDrag: () => void){
-        return GRID_ITEMS.map((item: GridItem, key: number ) =>
-            <DraggableItem key={key} name={item.state.name} onDrag={onDrag}>
-                {item.render()}
+    function getAllGridItemsForSidebar(onDrag: () => void) {
+        return GRID_ITEMS.map((item: GridItemWrapper, key: number) =>
+            <DraggableItem key={key} name={item.props.name} onDrag={onDrag}>
+                {getComponentFromGridItem(item, "")}
             </DraggableItem>
         );
     }
@@ -39,12 +38,12 @@ const GridDashboard: React.FC = () => {
                     data-ripple-light="true"
                     onClick={toggleSidebar}
                 >
-                    <AddIcon style={{"fontSize": "4rem"}} />
+                    <AddIcon style={{"fontSize": "4rem"}}/>
                 </button>
                 <div className={"content w-screen h-screen"}>
                     <h1>DataWatch</h1>
                     <div className={"dropzone-container h-full"}>
-                        <DropZone />
+                        <DropZone/>
                     </div>
                 </div>
             </div>
