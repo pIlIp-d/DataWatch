@@ -67,7 +67,7 @@ export default class DemographicsPlot extends GridItem<object, AdditionalState> 
                 values: { labels: string[], values: number[] }
             }) => i.tab === currentTab)[0].values;
 
-        return <div>
+        return <div className={"h-full"}>
             <ReactApexChart
                 options={{
                     chart: {
